@@ -20,6 +20,7 @@ def add_record_holder():
     new_rh_catches = int(input('Enter top number of catches by the record holder: '))
     new_rh = Record_Holder(name=new_rh_name, country=new_rh_country, catches=new_rh_catches)
     new_rh.save()
+    print(f'Okay. {new_rh}. Got it.')
 
 def search_record_holder():
     name_to_search = input('Which record holder would you like to find? ')
