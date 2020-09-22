@@ -24,3 +24,5 @@ def add_record_holder():
 def search_record_holder():
     name_to_search = input('Which record holder would you like to find? ')
     searched_rh = Record_Holder.select().where(Record_Holder.name == name_to_search)
+    return searched_rh
+
