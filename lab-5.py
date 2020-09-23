@@ -24,6 +24,11 @@ def add_record_holder():
 
 def search_record_holder():
     name_to_search = input('Which record holder would you like to find? ')
-    searched_rh = Record_Holder.select().where(Record_Holder.name == name_to_search)
+    searched_rh = Record_Holder.get_or_none(Record_Holder.name == name_to_search)
     return searched_rh
 
+def update_record_holder():
+    rh_to_update = search_record_holder()
+    new_catch_record = int(input(f'What is the new catch record for {rh_to_update.name}? '))
+    updated_rh = Record_Holder.update(catches=new_catch_record).where(Record_Holder.name == rh_to_update.name).execute()
+    print(f'{rh_to_update.name}\'s new catch record is {new_catch_record}.')
