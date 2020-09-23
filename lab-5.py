@@ -23,7 +23,7 @@ def add_record_holder():
     print(f'Okay. {new_rh}. Got it.')
 
 def search_record_holder():
-    name_to_search = input('Which record holder would you like to find? ')
+    name_to_search = input('What is the record holder\'s name? ')
     searched_rh = Record_Holder.get_or_none(Record_Holder.name == name_to_search)
     return searched_rh
 
@@ -32,3 +32,28 @@ def update_record_holder():
     new_catch_record = int(input(f'What is the new catch record for {rh_to_update.name}? '))
     updated_rh = Record_Holder.update(catches=new_catch_record).where(Record_Holder.name == rh_to_update.name).execute()
     print(f'{rh_to_update.name}\'s new catch record is {new_catch_record}.')
+
+def delete_record_holder():
+    rh_to_delete = search_record_holder()
+    confirmation = input('Would you like to delete? Press y . Otherwise enter any other letter to keep record holder. ')
+    if confirmation == 'y':
+        deleted_rh = Record_Holder.delete().where(Record_Holder.name == rh_to_delete.name).execute()
+        print(f'{rh_to_delete.name} was deleted.')
+    else:
+        print(f'{rh_to_delete.name} was not deleted.')
+
+def main():
+    db.connect()
+    db.create_tables([Record_Holder])
+    print('Practicing adding record holder...')
+    add_record_holder()
+    print('\nPracticing searching for a record holder...')
+    result = search_record_holder()
+    print(result)
+    print('\nPracticing updating record holder...')
+    update_record_holder()
+    print('\nPracticing deleting a record holder...')
+    delete_record_holder()
+
+if __name__ == '__main__':
+    main()
