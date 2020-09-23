@@ -47,6 +47,8 @@ def main():
     db.create_tables([Record_Holder])
     print('Practicing adding record holder...')
     add_record_holder()
+    print('Practicing adding a second record holder...')
+    add_record_holder()
     print('\nPracticing searching for a record holder...')
     result = search_record_holder()
     print(result)
