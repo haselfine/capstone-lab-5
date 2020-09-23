@@ -43,11 +43,13 @@ def delete_record_holder():
         print(f'{rh_to_delete.name} was not deleted.')
 
 def main():
+    '''This just goes through all the functions in order. There's no menu since it's just practicing using Peewee'''
+
     db.connect()
     db.create_tables([Record_Holder])
     print('Practicing adding record holder...')
     add_record_holder()
-    print('Practicing adding a second record holder...')
+    print('\nPracticing adding a second record holder...')
     add_record_holder()
     print('\nPracticing searching for a record holder...')
     result = search_record_holder()
